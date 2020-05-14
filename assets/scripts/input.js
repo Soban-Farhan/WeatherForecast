@@ -28,4 +28,21 @@ $(document).ready( function() {
 
     $("#s2id_autogen1").css({ 'width': '75%', 'border': 'none' })
 
+    $('#citySearchForm').on('submit', function(e) { 
+
+        $('#searchError').text("")
+
+        if ( $('input[name="cities"]').val() == "" ) {
+            $('#searchError').text("*Please select a city. Try Again.")
+            return e.preventDefault()
+        } else {
+            $("#dataSection").remove()
+            return e.preventDefault()
+        }
+
+        return e.preventDefault()
+
+    });
+    
+
 });

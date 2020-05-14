@@ -14,21 +14,35 @@
             <div class="row">
                 <div class="col-lg-8 p-0" id="detailedView" style="background-color: #f3fbff; border-radius: 20px 0px 0px 20px;">
                     <p class="p-3"></p>
-                    <form action="cityData">
+                    <form id="citySearchForm">
                         <div class="row">
                             <div class="col-7 col-5 offset-1">
-                                <div class="input-group mb-3">
+                                <div class="input-group mb-2">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text bg-white border-right-0"><i class="fa fa-search"></i></span>
                                     </div>
                                     <!-- <input name="cities" class="form-control border-left-0 bg-white p-0"> -->
                                     <input name="cities">
                                 </div>
+                                <label id="searchError"></label>
+                            </div>
+                            <div class="col-2">
+                                <button type="submit" class="btn btn-primary"> Search </button>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-11 offset-1">
+                            <div class="col-10 offset-1">
                                 <p style="font-size: x-large;"> Weather <b> Forecast </b></p>
+                                <p class="p-2"></p>
+                                <div id="WeatherReport">
+
+                                </div>
+                                <div style="border-radius: 20px; background-color: #D3D3D3;" id="dataSection">
+                                    <p class="p-5 m-0 text-center" style="font-size: smaller;">
+                                        Please make a search for a city to view the Weather Forecast.
+                                    </p>
+                                </div>
+                                <p class="p-2"></p>
                             </div>
                         </div>
                         <div class="row">
@@ -39,15 +53,16 @@
                     </form>
                 </div>
                 <div class="col-lg-4 p-0" id="cityView" style="background-color: #110e3c; border-radius: 0px 20px 20px 0px;">
-                    <p class="p-5"></p>
+                    <p class="p-3"></p>
                     <div class="p-0" style="background: url(/static/images/bg.png) no-repeat top left; background-size: cover; color: #fefeff;">
-                        <p class="text-center"> Today <br/> Sat, 3 Aug <br/>
-                            <span style="font-size: 65pt; font-weight: 100;">28</span>
+                        <p class="text-center"> Today <br/> {{ date }} <br/>
+                            <span style="font-size: 65pt; font-weight: 100;">--</span>
                             &deg;C <br/>
-                            Berlin, Germany <br/>
-                            Feels like 32 &nbsp; &#9679; &nbsp; Sunset 20:15
+                            -, - <br/>
+                            Feels like - &nbsp; &#9679; &nbsp; Sunset -
                         </p>
                     </div>
+                    <p class="p-3"></p>
                 </div>
             </div>
         </div>
