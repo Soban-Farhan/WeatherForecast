@@ -1,0 +1,83 @@
+{% load static %}
+
+{% include "./header.html" %}
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/select2/3.5.4/select2.min.css" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-css/1.4.6/select2-bootstrap.min.css" />
+    <script src="//cdnjs.cloudflare.com/ajax/libs/select2/3.5.4/select2.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/4.15.0/lodash.min.js"></script>
+    <script src="{% static 'scripts/data.js' %}"></script>
+    <script src="{% static 'scripts/input.js' %}"></script>
+
+    <p class="p-2"></p>
+    <div class="container" id="content" style="margin: 0; position: absolute; top: 50%; left: 50%; -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%);">
+        <div class="container-fluid" style="box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.15); border-radius: 20px;">
+            <div class="row">
+                <div class="col-lg-8 p-0" id="detailedView" style="background-color: #f3fbff; border-radius: 20px 0px 0px 20px;">
+                    <p class="p-3"></p>
+                    <form action="cityData">
+                        <div class="row">
+                            <div class="col-7 col-5 offset-1">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text bg-white border-right-0"><i class="fa fa-search"></i></span>
+                                    </div>
+                                    <!-- <input name="cities" class="form-control border-left-0 bg-white p-0"> -->
+                                    <input name="cities">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-11 offset-1">
+                                <p style="font-size: x-large;"> Weather <b> Forecast </b></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-10 offset-1">
+                                
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-lg-4 p-0" id="cityView" style="background-color: #110e3c; border-radius: 0px 20px 20px 0px;">
+                    <p class="p-5"></p>
+                    <div class="p-0" style="background: url(/static/images/bg.png) no-repeat top left; background-size: cover; color: #fefeff;">
+                        <p class="text-center"> Today <br/> Sat, 3 Aug <br/>
+                            <span style="font-size: 65pt; font-weight: 100;">28</span>
+                            &deg;C <br/>
+                            Berlin, Germany <br/>
+                            Feels like 32 &nbsp; &#9679; &nbsp; Sunset 20:15
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <p class="p-2"></p>
+    <script>
+
+        $(document).ready( function() {
+
+            if (window.innerWidth <= 990) {
+                $('#detailedView').css( "border-radius", "20px 20px 0px 0px" )
+                $('#cityView').css( "border-radius", "0px 0px 20px 20px" )
+                $('#content').attr( "style", "" )
+            }
+            $(window).on('resize', function() {
+                if (window.innerWidth <= 990) {
+                    $('#detailedView').css( "border-radius", "20px 20px 0px 0px" )
+                    $('#cityView').css( "border-radius", "0px 0px 20px 20px" )
+                    $('#content').attr( "style", "" )
+                } else {
+                    $( "#spacing" ).remove()
+                    $('#detailedView').css( "border-radius", "20px 0px 0px 20px" )
+                    $('#cityView').css( "border-radius", "0px 20px 20px 0px" )
+                    $('#content').attr( "style", "margin: 0; position: absolute; top: 50%; left: 50%; -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%);" )
+                }
+            })
+
+        });
+        
+
+    </script>
+
+{% include "./footer.html" %}

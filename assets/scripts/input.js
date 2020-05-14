@@ -1,7 +1,7 @@
 $(document).ready( function() {
 
     $('input[name="cities"]').select2({
-        data: NA,
+        data: CA,
         placeholder: "Search new place",
         multiple: false,
         // query with pagination
