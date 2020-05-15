@@ -14,7 +14,8 @@
             <div class="row">
                 <div class="col-lg-8 p-0" id="detailedView" style="background-color: #f3fbff; border-radius: 20px 0px 0px 20px;">
                     <p class="p-3"></p>
-                    <form id="citySearchForm">
+                    <form id="citySearchForm" method="POST">
+                        {% csrf_token %}
                         <div class="row">
                             <div class="col-7 col-5 offset-1">
                                 <div class="input-group mb-2">
@@ -39,7 +40,7 @@
                                 </div>
                                 <div style="border-radius: 20px; background-color: #D3D3D3;" id="dataSection">
                                     <p class="p-5 m-0 text-center" style="font-size: smaller;">
-                                        Please make a search for a city to view the Weather Forecast.
+                                        Please make a search for a city to view the Weather Forecast. <i class="fa fa-exclamation-circle"> </i>
                                     </p>
                                 </div>
                                 <p class="p-2"></p>
@@ -55,12 +56,21 @@
                 <div class="col-lg-4 p-0" id="cityView" style="background-color: #110e3c; border-radius: 0px 20px 20px 0px;">
                     <p class="p-3"></p>
                     <div class="p-0" style="background: url(/static/images/bg.png) no-repeat top left; background-size: cover; color: #fefeff;">
-                        <p class="text-center"> Today <br/> {{ date }} <br/>
-                            <span style="font-size: 65pt; font-weight: 100;">--</span>
-                            &deg;C <br/>
-                            -, - <br/>
-                            Feels like - &nbsp; &#9679; &nbsp; Sunset -
-                        </p>
+                        {% if request.method == "GET" %}
+                            <p class="text-center"> Today <br/> {{ date }} <br/>
+                                <span style="font-size: 65pt; font-weight: 100;">--</span>
+                                &deg;C <br/>
+                                -, - <br/>
+                                Feels like - &nbsp; &#9679; &nbsp; Sunset -
+                            </p>
+                        {% elif request.method == "POST" %}
+                            <p class="text-center"> Today <br/> {{ date }} <br/>
+                                <span style="font-size: 65pt; font-weight: 100;">{{ data.current.temp_c| stringformat:'d' }}</span>
+                                &deg;C <br/>
+                                {{ data.location.name }}, {{ data.location.region }}, {{ data.location.country }} <br/>
+                                Feels like {{ data.current.feelslike_c }} &nbsp; &#9679; &nbsp; Sunset {{ data.forecast.forecastday.0.astro.sunset }}
+                            </p>
+                        {% endif %}
                     </div>
                     <p class="p-3"></p>
                 </div>
