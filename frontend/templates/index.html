@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <script src="{% static 'scripts/data.js' %}"></script>
     <script src="{% static 'scripts/input.js' %}"></script>
+    <script src="{% static 'scripts/design.js' %}"></script>
 
     <p class="p-2"></p>
     <div class="container" id="content" style="margin: 0; position: absolute; top: 50%; left: 50%; -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%);">
@@ -48,10 +49,10 @@
                                         <div class="col-lg-12">
                                             <div class="card border-0 bg-transparent" style="font-size: small;">
                                                 <div class="row">
-                                                    <div class="col-lg-6">
+                                                    <div class="col-lg-6 text-center">
                                                         <div class="row">
                                                             <div class="col-6 p-0">
-                                                                {{ x.date }}
+                                                                <script type="text/javascript"> document.write( weekdays[new Date('{{ x.date }}').getDay()] ); </script>
                                                             </div>
                                                             <div class="col-4 p-0">
                                                                 <img src="/static/images/Humidity-icon.png" width="20px" alt="Humidity icon">&nbsp;{{ x.day.avghumidity|stringformat:'d' }}%
@@ -63,21 +64,21 @@
                                                     </div>
                                                     <div class="col-lg-6">
                                                         <div class="row text-center">
-                                                            <div class="col-2 p-0">
-                                                                {{ x.day.mintemp_c|stringformat:'d' }}
+                                                            <div class="col-3 p-0">
+                                                                <b>Min:</b> {{ x.day.mintemp_c|stringformat:'d' }}
                                                             </div>
-                                                            <div class="col-4 p-0 text-right">
+                                                            <div class="col-3 p-0 text-right">
                                                                 <div class="container-fluid p-0" style="margin: 0; position: relative; top: 50%; left: 50%; -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%); height: 5px; border-radius: 0px 50px 50px 0px; 
-                                                                background: linear-gradient(90deg, rgba(243,251,255,1) 50%, rgba(209,154,86,1) 50%);">
+                                                                background: linear-gradient(90deg, rgba(243,251,255,1) 0%, rgba(209,154,86,1) 0%);">
                                                                 </div>
                                                             </div>
-                                                            <div class="col-4 p-0 text-right">
+                                                            <div class="col-3 p-0 text-right">
                                                                 <div class="container-fluid p-0" style="margin: 0; position: relative; top: 50%; left: 50%; -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%); height: 5px; border-radius: 0px 50px 50px 0px; 
-                                                                background: linear-gradient(90deg, rgba(17,14,60,1) 50%, rgba(243,251,255,1) 50%);">
+                                                                background: linear-gradient(90deg, rgba(17,14,60,1) 100%, rgba(243,251,255,1) 100%);">
                                                                 </div>
                                                             </div>
-                                                            <div class="col-2 p-0">
-                                                                {{ x.day.maxtemp_c|stringformat:'d' }}
+                                                            <div class="col-3 p-0">
+                                                                <b>Max:</b> {{ x.day.maxtemp_c|stringformat:'d' }}
                                                             </div>
                                                         </div>
                                                     </div>
@@ -124,38 +125,8 @@
         <p class="p-2"></p>
         <div class="container-fluid text-center p-2 text-light">
             &copy; Copyright <script type="text/javascript"> document.write( new Date().getFullYear() ); </script> <b> <a href="https://www.sobanfarhan.net/" style="color: #110e3c;" title="Portfolio Website">Soban Farhan</a></b>. 
-            Powered by <a href="https://www.weatherapi.com/" style="color: #110e3c;" title="Free Weather API">WeatherAPI.com</a>
+            Powered by <a href="https://www.weatherapi.com/" style="color: #110e3c;" title="Free Weather API"><b>WeatherAPI.com</b></a>
         </div>
     </div>
-    <script>
-
-        $(document).ready( function() {
-
-            // alert();
-            var test = $("#test").parent().width()
-            $("#test").css('width')
-
-            if (window.innerWidth <= 990) {
-                $('#detailedView').css( "border-radius", "20px 20px 0px 0px" )
-                $('#cityView').css( "border-radius", "0px 0px 20px 20px" )
-                $('#content').attr( "style", "" )
-            }
-            $(window).on('resize', function() {
-                if (window.innerWidth <= 990) {
-                    $('#detailedView').css( "border-radius", "20px 20px 0px 0px" )
-                    $('#cityView').css( "border-radius", "0px 0px 20px 20px" )
-                    $('#content').attr( "style", "" )
-                } else {
-                    $( "#spacing" ).remove()
-                    $('#detailedView').css( "border-radius", "20px 0px 0px 20px" )
-                    $('#cityView').css( "border-radius", "0px 20px 20px 0px" )
-                    $('#content').attr( "style", "margin: 0; position: absolute; top: 50%; left: 50%; -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%);" )
-                }
-            })
-
-        });
-        
-
-    </script>
 
 {% include "./footer.html" %}
