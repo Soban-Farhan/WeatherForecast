@@ -35,11 +35,8 @@ $(document).ready( function() {
         if ( $('input[name="cities"]').val() == "" ) {
             $('#searchError').text("*Please select a city. Try Again.")
             return e.preventDefault()
-        } 
-        // else {
-        //     $("#dataSection").remove()
-        //     return e.preventDefault()
-        // }
+        }
+        
         return true
     });
     
