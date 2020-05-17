@@ -49,13 +49,13 @@
                                         <div class="col-lg-12">
                                             <div class="card border-0 bg-transparent" style="font-size: small;">
                                                 <div class="row">
-                                                    <div class="col-lg-6 text-center">
+                                                    <div class="col-lg-6">
                                                         <div class="row">
                                                             <div class="col-6 p-0">
-                                                                <script type="text/javascript"> document.write( weekdays[new Date('{{ x.date }}').getDay()] ); </script>
+                                                                &nbsp;&nbsp; <b><script type="text/javascript"> document.write( weekdays[new Date('{{ x.date }}').getDay()] ); </script></b>
                                                             </div>
                                                             <div class="col-4 p-0">
-                                                                <img src="/static/images/Humidity-icon.png" width="20px" alt="Humidity icon">&nbsp;{{ x.day.avghumidity|stringformat:'d' }}%
+                                                                <img src="/static/images/Humidity-icon.png" width="20px" alt="Humidity icon">&nbsp;{{ x.day.daily_chance_of_rain }}%
                                                             </div>
                                                             <div class="col-2 p-0">
                                                                 <img src="https:{{ x.day.condition.icon }}" width="20px" alt="Humidity icon">
@@ -83,7 +83,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <hr class="m-1"/>
+                                                <hr class="m-2"/>
                                             </div>
                                         </div>
                                         {% endfor %}
