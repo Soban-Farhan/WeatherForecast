@@ -1,20 +1,14 @@
-from django.shortcuts import render, redirect
-from django.http import JsonResponse, HttpResponse
-import json
-import datetime
-import requests
-import os
+from dotenv import load_dotenv
+load_dotenv()
+
+from django.shortcuts import render
+from django.http import JsonResponse
+import datetime, requests, os
 
 def index(request):
 
     date = datetime.datetime.now().strftime("%A %d, %B %Y")
-    day = ["Monday", "Tuesday", "Wednesday", "Thursday", 
-            "Friday", "Saturday", "Sunday"]
 
-    # month = ["January", "February", "March", "April", "May",
-    #         "June", "July", "August", "September", "October",
-    #         "November", "December"]
-    #   
     if request.method == "POST":
 
         url = "https://api.weatherapi.com/v1/forecast.json"
